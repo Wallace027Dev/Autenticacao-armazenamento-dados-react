@@ -21,7 +21,7 @@ export const Signup = () => {
     }
 
     try {
-      await signUp(email.password);
+      await signUp(email, password);
     } catch (error) {
       alert("Ocorreu um erro ao tentar criar um novo usuario");
     }
