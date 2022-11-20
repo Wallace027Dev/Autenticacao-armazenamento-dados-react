@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 export const Signup = () => {
@@ -6,12 +7,16 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(element) {
     element.preventDefault();
 
+    setLoading(true);
+
     if (password.length < 6) {
       alert("Password deve ter no mínimo 6 caracteres!");
+      setLoading(false);
       return;
     }
 
@@ -22,14 +27,15 @@ export const Signup = () => {
 
     try {
       await signUp(email, password);
-    } catch (error) {
-      alert("Ocorreu um erro ao tentar criar um novo usuario");
+    } catch {
+      alert("email criado");
     }
+    setLoading(false);
   }
 
   return (
     <div className="container">
-      <h2>Signup</h2>
+      <h2>Cadastro de usuário</h2>
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input
@@ -38,24 +44,31 @@ export const Signup = () => {
           onChange={(element) => setEmail(element.target.value)}
         />
 
-        <label>Password</label>
+        <label>Senha</label>
         <input
           type="password"
           value={password}
           onChange={(element) => setPassword(element.target.value)}
         />
 
-        <label>Password confirmation</label>
+        <label>Confirmação de senha</label>
         <input
           type="password"
           value={confirmPassword}
           onChange={(element) => setConfirmPassword(element.target.value)}
         />
 
-        <button className="button-block" type="submit">
-          Signup
+        <button disable={loading} className="button-block" type="submit">
+          CADASTRAR
         </button>
       </form>
+      <div className="center">
+        <div>
+          <p>
+            Já possui uma conta? <Link to="/login">Login</Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

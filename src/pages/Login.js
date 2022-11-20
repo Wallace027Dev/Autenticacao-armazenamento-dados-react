@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 export const Login = () => {
   const { signIn } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,11 +19,11 @@ export const Login = () => {
       alert("Password deve ter no mínimo 6 caracteres!");
       setLoading(false);
       return;
-    } 
+    }
 
     try {
       await signIn(email, password);
-      navigate("/")
+      navigate("/");
     } catch (error) {
       alert("Ocorreu um erro ao tentar efetuar o login");
     }
@@ -41,7 +41,7 @@ export const Login = () => {
           onChange={(element) => setEmail(element.target.value)}
         />
 
-        <label>Password</label>
+        <label>Senha</label>
         <input
           type="password"
           value={password}
@@ -52,6 +52,17 @@ export const Login = () => {
           Login
         </button>
       </form>
+
+      <div className="center">
+        <div>
+          <p>
+            Esqueceu a senha? <Link to="/forgot-password">Resetar senha</Link>
+          </p>
+          <p>
+            Precisa de uma nova conta? <Link to="/signup">Cadastre-se</Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

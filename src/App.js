@@ -5,16 +5,35 @@ import { Signup } from "./pages/Signup";
 import { Login } from "./pages/Login";
 import { UpdateProfile } from "./pages/UpdateProfile";
 import { ForgotPassword } from "./pages/ForgotPassowrd";
+import { ProtectedRoute } from "./components/PrivateRoutes";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<UserProfile />}></Route>
-          <Route path="/update-profile" element={<UpdateProfile />}></Route>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/update-profile"
+            element={
+              <ProtectedRoute>
+                <UpdateProfile />
+              </ProtectedRoute>
+            }
+          ></Route>
+
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           <Route
             path="*"

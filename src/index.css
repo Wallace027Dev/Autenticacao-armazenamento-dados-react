@@ -7,7 +7,7 @@
 :root {
   --primary-color: #6b61f5;
   --primary-color-dark: #5048b6;
-  --neutral-background: #03001a;
+  --neutral-background: #02000e;
   --neutral-text: #fff;
   --neutral-link: #cc3358;
   --neutral-link-hover: #952541;
@@ -52,7 +52,6 @@
   top: 0;
   width: 100%;
   z-index: 2;
-
 }
 
 .navigation-brand {
@@ -277,7 +276,6 @@ input[type="week"],
 input:not([type]),
 textarea,
 select {
-  -webkit-appearance: none;
   background-color: transparent;
   border: 0.1rem solid #d1d1d1;
   border-radius: 0.4rem;
