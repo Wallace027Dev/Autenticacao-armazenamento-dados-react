@@ -1,14 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 export const UserProfile = () => {
-  const { currentUser, signOut } = useAuth();
+  const { currentUser, logOut } = useAuth();
   const navigate = useNavigate();
 
   async function handleLogout() {
     try {
-      await signOut();
+      await logOut();
       navigate("/login");
     } catch (error) {
       alert("Ocorreu um erro ao tentar efetuar o logout");
@@ -17,9 +17,10 @@ export const UserProfile = () => {
 
   return (
     <div className="container">
-      <h1>Perfil do Usuário</h1>
-
-      <button>Sair</button>
+      <div className="header">
+        <h1>Perfil do Usuário</h1>
+        <button onClick={handleLogout}>Sair</button>
+      </div>
 
       <table>
         <thead>
@@ -30,8 +31,10 @@ export const UserProfile = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Email: {currentUser?.email}</td>
-            <td>Atualizar perfil do usuário</td>
+            <td>{currentUser?.email}</td>
+            <td>
+              <Link to="/update-profile">Atualizar perfil do usuário</Link>
+            </td>
           </tr>
         </tbody>
       </table>
