@@ -34,7 +34,9 @@ export const ForgotPassword = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className="button-block">Recuperar senha</button>
+        <button disabled={loading} className="button-block">
+          Recuperar senha
+        </button>
       </form>
       <div className="center">
         <div>

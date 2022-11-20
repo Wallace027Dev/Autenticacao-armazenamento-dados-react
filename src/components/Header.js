@@ -1,12 +1,12 @@
 import React from "react";
-import logo from "../images/logo-w.jpg";
+import logo from "../images/logo.svg";
 
 export const Header = () => {
   return (
     <nav>
       <div className="container">
         <a className="navigation-brand" href="/">
-          <h2>AUTENTICAÇÃO E ARMAZENAMENTO</h2>
+          <img src={logo} alt="logo" />
         </a>
       </div>
     </nav>

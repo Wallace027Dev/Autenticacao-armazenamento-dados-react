@@ -7,7 +7,6 @@ export const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(element) {
@@ -25,6 +24,7 @@ export const Login = () => {
       await signIn(email, password);
       navigate("/");
     } catch (error) {
+      console.log(error)
       alert("Ocorreu um erro ao tentar efetuar o login");
     }
 

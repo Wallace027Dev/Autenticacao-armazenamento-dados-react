@@ -5,12 +5,12 @@
 }
 
 :root {
-  --primary-color: #6b61f5;
-  --primary-color-dark: #5048b6;
-  --neutral-background: #02000e;
+  --primary-color: #00ADB5;
+  --primary-color-dark: #224957;
+  --neutral-background: #222831;
   --neutral-text: #fff;
-  --neutral-link: #cc3358;
-  --neutral-link-hover: #952541;
+  --neutral-link: #00ADB5;
+  --neutral-link-hover: #393E46;
 }
 
 .header {
@@ -23,6 +23,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
 }
 
 .button-block {
